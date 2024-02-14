@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Will You be my Valentine?</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Add background image */
+            background-size: cover; /* Cover the entire viewport */
+            position: relative; /* Ensure positioning relative to the body */
+        }
+        .container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            border: 2vw solid transparent;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 2vw;
+            padding: 2vw;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            text-align: center;
+            position: relative;
+            width: 95%;
+            max-width: 500px;
+            height: auto;
+            max-height: 95%;
+            overflow: auto;
+            transition: height 0.5s;
+        }
+        .card-img {
+            border: 5px solid #f8f9fa;
+            border-radius: 10px;
+        }
+        #question {
+            margin-top: 3vw;
+            font-size: 2vw;
+            font-weight: bold;
+            font-family: fantasy;
+        }
+        #btn-yes, #btn-no {
+            margin-top: 1vw;
+            font-size: 2vw;
+        }
+        #message {
+            display: none;
+            margin-top: 3vw;
+            font-size: 2vw;
+            color: #dc3545;
+            font-style: italic;
+        }
+        #love-you {
+            display: none;
+            margin-top: 3vw;
+            font-size: 4vw;
+            font-family: cursive;
+            color: #e83e8c;
+        }
+        #love-name {
+            display: none;
+            margin-top: 1.5vw;
+            font-size: 3vw;
+            font-weight: bold;
+            color: #007bff;
+        }
+        #romantic-message {
+            display: none;
+            margin-top: 2vw;
+            font-size: 2vw;
+            line-height: 2.5vw; /* Adjust line height for better readability */
+            color: #d700c9;
+        }
+        #love-image {
+            display: none;
+            margin-top: 3vw;
+            max-width: 100%;
+            height: auto;
+        }
+        /* Watermark style */
+        .watermark {
+            position: absolute;
+            top: 10px; /* Adjust top distance */
+            left: 40%; /*Adjust left distance*/
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5); /* Semi-transparent white color */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <!-- Watermark -->
+        <div class="watermark">kalpesh-vala</div>
+        <img src="img_ask.gif" class="card-img img-fluid" alt="Will you be my Valentine?">
+        <div id="question">Will you be my Valentine?</div>
+        <button id="btn-yes" class="btn btn-outline-primary">Yes</button>
+        <button id="btn-no" class="btn btn-danger">No</button>
+        <div id="love-you">I love you So Much</div>
+        <div id="love-name">Girlfriend's Name</div>
+        <div id="romantic-message">
+            You are my sunshine,<br>
+            My only sunshine.
+        </div>
+        <img src="after_img.jpg" id="love-image" alt="Additional Image">
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var card = $(".card");
+
+        // Function to adjust card height based on content
+        function adjustCardHeight() {
+            var contentHeight = 0;
+            card.children().each(function() {
+                contentHeight += $(this).outerHeight(true); // Include margin
+            });
+            card.height(contentHeight);
+        }
+
+        // Function to move 'No' button to a random position within the card
+        function moveNoButton() {
+            var buttonWidth = $("#btn-no").outerWidth(); // Get button width
+            var buttonHeight = $("#btn-no").outerHeight(); // Get button height
+            var cardWidth = card.width() - buttonWidth; // Get available width for button movement
+            var cardHeight = card.height() - buttonHeight; // Get available height for button movement
+            var leftPos = Math.random() * cardWidth; // Random left position within card width
+            var topPos = Math.random() * cardHeight; // Random top position within card height
+            $("#btn-no").css({
+                "position": "absolute",
+                "top": topPos,
+                "left": leftPos
+            });
+        }
+
+        // Hide the 'No' button and show additional content on click of 'Yes' button
+        $("#btn-yes").click(function() {
+            $("#btn-no").hide();
+            $("#love-you").show();
+            $("#love-name").show();
+            $("#romantic-message").show();
+            $("#love-image").show();
+            adjustCardHeight(); // Adjust card height based on content
+        });
+
+        // Move 'No' button to a random position within the card on mouseover
+        $("#btn-no").mouseover(function() {
+            moveNoButton();
+        });
+    });
+</script>
+
+</body>
+</html>
