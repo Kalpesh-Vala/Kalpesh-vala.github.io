@@ -1,0 +1,45 @@
+body {
+    background : linear-gradient(90dgr,rgb(14, 255, 231),rgb(212, 255, 0));
+}
+.card {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card-header {
+    background-color: #343a40;
+    color: #fff;
+}
+.or-container {
+    align-items: center;
+    color: #ccc;
+    display: flex;
+    margin: 25px 0;
+}
+
+.line-separator {
+    background-color: #ccc;
+    flex-grow: 5;
+    height: 1px;
+}
+
+.or-label {
+    flex-grow: 1;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.google-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-google {
+    display: flex;
+    align-items: center;
+}
+img{
+    height: 32px;
+    width: 32px;
+}
